@@ -19,14 +19,14 @@ function setup() {
   block2 = new Block(1285,520,80,80)
   block3 = new Block(1365,520,80,80)
   block4 = new Block(1445,520,80,80)
-  ball = new Ball(340,240,40)
+  ball = new Ball(340,240,30)
   const mouse = Mouse.create(canvas.elt)
   var options = {
     mouse:mouse
   }
   mConstraint = MConstraint.create(engine,options)
   World.add(world,mConstraint)
-  rubberband = new Band(ball.body,{x:222,y:175})
+  rubberband = new Band(ball.ball,{x:175,y:622})
 }
 
 function draw() {
@@ -37,9 +37,17 @@ function draw() {
   block2.display()
   block3.display()
   block4.display()
- // rubberband.display()
+ rubberband.display()
   ball.display()
   drawSprites();
   console.log(mouseX)
   console.log(mouseY)
+}
+function mouseReleased(){
+ // rubberband.fly()
+}
+function keyPressed(){
+  if(keyCode === 32){
+      rubberband.attach(ball.ball);
+  }
 }
